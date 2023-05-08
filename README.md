@@ -1,1 +1,1 @@
-# learn-typescript
+# Getting Around TypeScript
