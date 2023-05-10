@@ -1,5 +1,5 @@
 "use strict";
-// Lesson 07 - Index Signatures & keyof Assertions - 2:40:00 - 3:00:00
+// Lesson 07 - Index Signatures & keyof Assertions - 2:40:00 - 3:01:50
 const todaysTransactions = {
     Pizza: -10,
     Books: -5,

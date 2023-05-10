@@ -1,4 +1,4 @@
-// Lesson 07 - Index Signatures & keyof Assertions - 2:40:00 - 3:00:00
+// Lesson 07 - Index Signatures & keyof Assertions - 2:40:00 - 3:01:50
 
 // Index Signatures
 
