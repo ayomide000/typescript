@@ -117,7 +117,11 @@ class StateObject {
         this.data = value;
     }
 }
-const store = new StateObject('John');
+const store = new StateObject('John'); // The type passed into the argument will be the only one that can be allowed, if string or number is passed, then it can only accept such type
 console.log(store.state);
 store.state = 'Gbolahan';
 // store.state = 12
+// we can also specify the type we want to be passed
+const myState = new StateObject([13]);
+myState.state = (['Daniel', 17, true]);
+console.log(myState.state);
