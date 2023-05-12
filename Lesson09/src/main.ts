@@ -65,7 +65,7 @@ type LetterGrades = 'A' | 'B' | 'C' | 'D' | 'U'
 
 const finalGrades: Record<Students, LetterGrades> = {
     Esther: 'A',
-    Miracle: 'B'
+    Miracle: 'B',
 }
 
 // =================================================
@@ -93,7 +93,7 @@ const score: AssignResult = {
     grade: 83 
 }
 
-// Omit
+// Omit - to omit
   type AssignPreview = Omit<Assignment, 'grade' | 'verified'>
 
   const preview: AssignPreview = {
@@ -103,3 +103,69 @@ const score: AssignResult = {
   }
 
   
+  // ==========================================================
+  // Exclude and Extract
+
+  type adjustedGrade = Exclude<LetterGrades, "U"> //to remove
+
+  type highGrades = Extract<LetterGrades, "A" | "B"> // to select
+  // Mouse over exclude and extract
+
+  // ========================================================
+  // Nonnullable
+
+  type AllPossibleGrades = 'Dave' | 'John' | null | undefined
+
+  type NamesOnly = NonNullable<AllPossibleGrades> // returns datas that are not null like null and undefined
+
+  // =============================================================
+  // ReturnType
+
+  // type newAssign = {title: string, points: number}
+
+  const createNewAssign = (title: string, points: number) => {
+    return {title, points}
+  }
+
+  type newAssign = ReturnType<typeof createNewAssign>
+  // It is very useful especially for functions you didnt create like a function from a library
+
+  const tsAssign: newAssign = createNewAssign('Utility Types', 100)
+  console.log(tsAssign);
+
+  // ==============================================
+  // Parameters
+
+  type AssignParams = Parameters<typeof createNewAssign>
+  // It will create a tuple of parameters of createNewAssign function
+
+  const assignArgs: AssignParams = ["Generics", 100]
+
+  const tsAssign2: newAssign = createNewAssign(...assignArgs)
+  console.log(tsAssign2);
+
+  // ==================================================
+  // Awaited - helps us with the ReturnType of a Promise
+
+  interface User {
+    id: number,
+    name: string,
+    username: string,
+    email: string
+  }
+
+  const fetchUsers = async (): Promise<User[]> => {
+
+    const data = await fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .catch(err => {
+      if (err instanceof Error) console.log(err.message);
+    })
+    return data
+
+  }
+
+  type FetchUsersReturnType = Awaited<ReturnType<typeof fetchUsers>> 
+  // If you mouseover FetchUsersReturnType, it will show PromiseUser[], To resolve a promise in TS, we wrap Promise inside Awaited
+
+  fetchUsers().then(users => console.log(users))
