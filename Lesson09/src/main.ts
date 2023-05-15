@@ -34,7 +34,7 @@
     // send to database, etc.
     return assign
  } 
-  // Required here means that all data are required uncluding the optional 
+  // Required here means that all data are required including the optional 
   
   // Readonly
 
@@ -109,7 +109,7 @@ const score: AssignResult = {
   type adjustedGrade = Exclude<LetterGrades, "U"> //to remove
 
   type highGrades = Extract<LetterGrades, "A" | "B"> // to select
-  // Mouse over exclude and extract
+  // Mouse over LetterGrades for both exclude and extract
 
   // ========================================================
   // Nonnullable
