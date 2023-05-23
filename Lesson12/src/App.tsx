@@ -8,7 +8,7 @@ import {useState} from 'react'
 function App() {
     const [count, setCount] = useState<number>(1)
 
-  return ( 
+  return (
   <>
     <Heading title={"Hello"}/>  
     {/* show error until a title props is added */}
@@ -16,6 +16,7 @@ function App() {
      {/* children is not something that can be passed around like props, it goes in between the tags */}
     <Counter setCount={setCount}>Count is {count}</Counter>
     <List items={['Coffee', 'Tacos', 'Code']} render={(item: string) => <span className="bold gold">{item}</span>}/>
+    <List items={[22, 56, 78]} render={(item: number) => <span className="bold gold">{item}</span>}/>
   </>
   )
 }
